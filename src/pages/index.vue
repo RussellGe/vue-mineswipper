@@ -1,5 +1,5 @@
-<script setup lang="ts">import { get } from "@vueuse/core"
-
+<script setup lang="ts">
+import type { BlockState } from '../types'
 function onRightClick(block: BlockState) {
   if(block.revealed) return;
   block.flagged = !block.flagged
@@ -23,14 +23,7 @@ const onClick = (e: MouseEvent ,item: BlockState) => {
 let mineGenerated = false
 let dev = false
 
-interface BlockState {
-  x: number
-  y: number
-  revealed?: boolean
-  mine?: boolean
-  flagged?: boolean
-  adjacentMines: number
-}
+
 const directions = [
   [1,1],
   [1,0],
@@ -43,7 +36,7 @@ const directions = [
 ]
 const WIDTH = 10
 const HEIGHT = 10
-const state = reactive(Array.from({length: HEIGHT}, (_, y) => Array.from({length: WIDTH}, (_, x) =>( <BlockState>{x, y, adjacentMines: 0, revealed: false}))))
+const state = ref(Array.from({length: HEIGHT}, (_, y) => Array.from({length: WIDTH}, (_, x) =>( <BlockState>{x, y, adjacentMines: 0, revealed: false}))))
 
 const numberColor = [
   'text-transparent',
