@@ -4,8 +4,10 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Confetti: typeof import('./components/Confetti.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    MyBlock: typeof import('./components/MyBlock.vue')['default']
     README: typeof import('./components/README.md')['default']
   }
 }
